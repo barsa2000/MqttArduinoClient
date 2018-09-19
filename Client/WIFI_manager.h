@@ -1,6 +1,7 @@
 #ifndef WIFI_manager_H
 #define WIFI_manager_H
 
+#include "DEBUG.h"
 #include "WiFiEsp.h"        //WiFi
 #include "WiFiEspClient.h"  //WiFiEspClient
 #include "SoftwareSerial.h" //SoftwareSerial
@@ -24,12 +25,12 @@ void init() {
 
 //funzione per l'attesa della connessione alla rete WiFi
 void wait() {
-  Serial.print("checking wifi");
+  DEBUG_PRINT("checking wifi");
   while (WiFi.status() != WL_CONNECTED) {
-    Serial.print(".");
+    DEBUG_PRINT(".");
     delay(1000);
   }
-  Serial.println();
+  DEBUG_PRINTLN();
 }
 
 }

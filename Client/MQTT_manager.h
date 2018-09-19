@@ -1,6 +1,7 @@
 #ifndef MQTT_manager_H
 #define MQTT_manager_H
 
+#include "DEBUG.h"
 #include <PubSubClient.h>     //PubSubClient
 #include <Adafruit_ADS1015.h> //Adafruit_ADS1115
 #include <ArduinoJson.h>      //StaticJsonBuffer, JsonObject
@@ -65,7 +66,7 @@ void sendMeasures(unsigned long epoch, unsigned long lastSync){
     root.printTo(output);
     String topic = String("Accelerometri/")+ACCINDEX;
     client.publish( topic.c_str(), output.c_str() );
-    Serial.println(output.c_str());
+    DEBUG_PRINTLN(output.c_str());
 }
 
 
