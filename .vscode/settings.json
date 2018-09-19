@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "__locale": "cpp",
+        "algorithm": "cpp",
+        "string": "cpp",
+        "__bit_reference": "cpp",
+        "initializer_list": "cpp",
+        "iterator": "cpp"
+    }
+}
