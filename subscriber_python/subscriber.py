@@ -1,14 +1,16 @@
 import paho.mqtt.client as mqtt
 import json
 import os
+import shutil
 
 # indirizzo IP del broker MQTT
-broker_address="127.0.0.1" 
+broker_address="192.168.2.178" 
 
-# verifica dell'esistenza della cartella "data", se non presente creazione 
-# della stessa
-if not os.path.isdir("data"):
-	os.mkdir("data")
+# rimozione cartella "data" in caso sia già prese te
+if os.path.isdir("data"):
+	shutil.rmtree("data") 
+# creazione della cartella "data"
+os.mkdir("data")
 
 #funzione richiamata alla ricezione di un nuovo messaggio MQTT
 def on_message(client, userdata, message):
