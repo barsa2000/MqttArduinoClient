@@ -1,8 +1,10 @@
-#define ACCINDEX 1
+// definizione del numero identificativo della stazione di raccolta dati 
+#define ACCINDEX 2
 
 #include "DEBUG.h"
 #include "WIFI_manager.h"
 #include "MQTT_manager.h" 
+
 #include "WiFiEspUdp.h"    //WiFiEspUDP
 #include <NTPClient.h>     //NTPClient
 
@@ -45,7 +47,6 @@ void setup() {
   lastSync = millis();
   // chiusura della connessione al server NTP
   timeClient.end();
-
   // spegnimento led su scheda Arduino
   digitalWrite(13, LOW); 
 }
@@ -62,16 +63,6 @@ void loop() {
   }
   // invio dei dati
   MQTT::sendMeasures(epoch, lastSync);
-  // calcolo del tempo rimanente da attendere per l'esecuzione di un ciclo
-  //int d = (1000 / sendRate) - (millis() - elapsed);
-  // attendo 0 secondi se il tempo rimanente è negativo altrimenti attendo il
-  // tempo calcolato
-  /*
-  if(d < 0)
-    delay(0);
-  else
-    delay(d);
-    */
   // esegui il loop del client MQTT
   MQTT::loop();
 }
